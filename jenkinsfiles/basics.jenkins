@@ -22,8 +22,7 @@ pipeline {
         stage("Install requirements") {
             steps {
                 sh 'pwd'
-                sh 'ls'
-                sh 'pip install -r requirements.txt'
+                sh 'venv/bin/pip3 install -r src/requirements.txt'
             }
         }
     }
