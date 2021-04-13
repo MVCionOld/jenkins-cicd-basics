@@ -26,6 +26,8 @@ pipeline {
         }
         stage("Run tests") {
             steps {
+                sh 'pwd'
+                sh 'ls'
                 sh 'venv/bin/python3 -m unittest --verbose --buffer --locals tests/test_basics/test_strings'
                 sh 'venv/bin/python3 -m unittest --verbose --buffer --locals tests/test_basics/test_widget'
             }
