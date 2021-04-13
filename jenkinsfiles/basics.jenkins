@@ -15,12 +15,13 @@ pipeline {
     stages {
         stage("Set up virtual environment") {
             steps {
-                sh 'python3 -m virtualenv venv'
+                sh 'python3 -m virtualenv venv -p /usr/bin/python3'
                 sh '. venv/bin/activate'
             }
         }
         stage("Install requirements") {
             steps {
+                sh 'pwd'
                 sh 'pip install -r requirements.txt'
             }
         }
