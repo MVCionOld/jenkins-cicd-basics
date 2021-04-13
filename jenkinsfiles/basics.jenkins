@@ -21,8 +21,13 @@ pipeline {
         }
         stage("Install requirements") {
             steps {
-                sh 'pwd'
-                sh 'venv/bin/pip3 install -r src/basics/requirements.txt'
+                sh 'venv/bin/pip3 install -r src/requirements.txt'
+            }
+        }
+        stage("Run tests") {
+            steps {
+                sh 'venv/bin/python3 -m unittest --verbose --buffer --locals tests/test_basics/test_strings'
+                sh 'venv/bin/python3 -m unittest --verbose --buffer --locals tests/test_basics/test_widget'
             }
         }
     }
