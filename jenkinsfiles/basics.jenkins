@@ -1,0 +1,28 @@
+#!groovy
+
+properties([disableConcurrentBuilds()])  // запрещаем одновременные сборки
+
+pipeline {
+    agent {  // указываем агента, который будет выполнять пайплайн
+        label 'master'
+    }
+    options {
+        // храним логи последних 10 сборок и артефакты последних 10 сборок
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        // хотим видеть временные отметки в выводе сборки
+        timestamps()
+    }
+    stages {
+        stage("Set up virtual environment") {
+            steps {
+                sh 'python3 -m virtualenv venv'
+                sh '. venv/bin/activate'
+            }
+        }
+        stage("Install requirements") {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+    }
+}
