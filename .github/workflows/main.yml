@@ -45,6 +45,7 @@ jobs:
         run: python -m venv venv
       - name: "Install requirements"
         run: ./venv/bin/pip3 install -r src/requirements.txt
+      # https://docs.github.com/en/actions/guides/storing-workflow-data-as-artifacts
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
