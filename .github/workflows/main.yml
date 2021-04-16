@@ -34,3 +34,12 @@ jobs:
         run: |
           sudo ./venv/bin/python3 -m unittest --verbose --buffer --locals tests/test_basics/test_strings.py
           sudo ./venv/bin/python3 -m unittest --verbose --buffer --locals tests/test_basics/test_widget.py
+
+  test:
+    runs-on: ubuntu-latest
+#     needs: [build]
+    
+    steps:
+      - name: "Hello World!"
+        run: |
+          echo "Hello, World!"
